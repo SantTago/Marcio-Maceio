@@ -47,7 +47,7 @@ const Location: React.FC = () => {
         {/* Visual/Decorative */}
         <div className="md:w-1/2 relative h-[500px] w-full rounded-2xl overflow-hidden shadow-2xl group">
             <img 
-                src="https://picsum.photos/id/1039/800/800" 
+                src="https://i.ibb.co/MxpYwZ6P/images-2.jpg" 
                 alt="Vista do Caminho do Rei"
                 className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" 
             />

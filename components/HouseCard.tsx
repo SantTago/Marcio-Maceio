@@ -3,17 +3,19 @@ import { House } from '../types';
 
 interface HouseCardProps {
   house: House;
+  onSelect: (house: House) => void;
 }
 
-const HouseCard: React.FC<HouseCardProps> = ({ house }) => {
+const HouseCard: React.FC<HouseCardProps> = ({ house, onSelect }) => {
   return (
     <div className="flex flex-col overflow-hidden rounded-2xl bg-white shadow-xl transition-all hover:shadow-2xl hover:-translate-y-1">
-      <div className="relative h-64 overflow-hidden">
+      <div className="relative h-64 overflow-hidden group cursor-pointer" onClick={() => onSelect(house)}>
         <img 
           src={house.imageUrl} 
           alt={house.name} 
-          className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
+          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
         />
+        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors"></div>
         <div className="absolute top-4 right-4 rounded-full bg-white/90 px-3 py-1 text-sm font-bold text-gray-800 shadow-sm backdrop-blur-sm">
           R$ {house.pricePerNight} <span className="font-normal text-xs text-gray-500">/noite</span>
         </div>
@@ -28,7 +30,7 @@ const HouseCard: React.FC<HouseCardProps> = ({ house }) => {
             <span className="flex items-center gap-1"><i className="fa-solid fa-bath text-sunset-500"></i> {house.bathrooms} Banh.</span>
         </div>
 
-        <p className="mb-6 flex-1 text-gray-600 leading-relaxed text-sm">
+        <p className="mb-6 flex-1 text-gray-600 leading-relaxed text-sm line-clamp-3">
           {house.description}
         </p>
 
@@ -45,7 +47,10 @@ const HouseCard: React.FC<HouseCardProps> = ({ house }) => {
             )}
         </div>
 
-        <button className="w-full rounded-lg bg-gray-900 py-3 text-sm font-semibold text-white transition-colors hover:bg-sunset-700 focus:outline-none focus:ring-2 focus:ring-sunset-500 focus:ring-offset-2">
+        <button 
+          onClick={() => onSelect(house)}
+          className="w-full rounded-lg bg-gray-900 py-3 text-sm font-semibold text-white transition-colors hover:bg-sunset-700 focus:outline-none focus:ring-2 focus:ring-sunset-500 focus:ring-offset-2"
+        >
           Ver Detalhes e Reservar
         </button>
       </div>

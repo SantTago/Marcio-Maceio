@@ -7,6 +7,7 @@ export interface House {
   bedrooms: number;
   bathrooms: number;
   imageUrl: string;
+  images: string[]; // Array of additional images
   features: string[];
 }
 

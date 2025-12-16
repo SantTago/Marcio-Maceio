@@ -9,7 +9,12 @@ export const HOUSES: House[] = [
     capacity: 4,
     bedrooms: 2,
     bathrooms: 2,
-    imageUrl: 'https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?q=80&w=800&auto=format&fit=crop',
+    imageUrl: 'https://i.ibb.co/C32Nm6NG/image-maceio-camocim-ap-camocim-praia-bangalokite13-2.jpg',
+    images: [
+        'https://i.ibb.co/C32Nm6NG/image-maceio-camocim-ap-camocim-praia-bangalokite13-2.jpg',
+        'https://i.ibb.co/VW45Vzvp/images-1.jpg',
+        'https://i.ibb.co/M5WGhz71/images.jpg'
+    ],
     features: ['Vista Panorâmica', 'Jacuzzi', 'Wi-Fi Starlink', 'Cozinha Gourmet', 'Ar Condicionado'],
   },
   {
@@ -20,7 +25,12 @@ export const HOUSES: House[] = [
     capacity: 2,
     bedrooms: 1,
     bathrooms: 1,
-    imageUrl: 'https://images.unsplash.com/photo-1587061949409-02df41d5e562?q=80&w=800&auto=format&fit=crop',
+    imageUrl: 'https://i.ibb.co/nsQ2K88x/images-3.jpg',
+    images: [
+        'https://i.ibb.co/nsQ2K88x/images-3.jpg',
+        'https://i.ibb.co/XZpy7J4j/cb727d824bcaae1855ea33e590acf37f.jpg',
+        'https://i.ibb.co/WvRK63wV/c6b1ca419bff432ba4f948aa676208cf.webp'
+    ],
     features: ['Deck de Madeira', 'Rede de Descanso', 'Churrasqueira', 'Smart TV', 'Estacionamento'],
   },
   {
@@ -31,7 +41,12 @@ export const HOUSES: House[] = [
     capacity: 10,
     bedrooms: 5,
     bathrooms: 4,
-    imageUrl: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=800&auto=format&fit=crop',
+    imageUrl: 'https://i.ibb.co/99fHm35V/Camocim-4-1-1024x732.jpg',
+    images: [
+        'https://i.ibb.co/99fHm35V/Camocim-4-1-1024x732.jpg',
+        'https://i.ibb.co/V0KsSZvK/f469e07ac84a4569a91a855b3b4b475d.webp',
+        'https://i.ibb.co/wFgy3C83/579396475-18125922973500076-2476353317837443599-n.jpg'
+    ],
     features: ['Piscina Infinita', 'Acesso Direto à Trilha', 'Sala de Jogos', 'Lareira', 'Serviço de Limpeza'],
   },
   {
@@ -42,20 +57,24 @@ export const HOUSES: House[] = [
     capacity: 6,
     bedrooms: 3,
     bathrooms: 2,
-    imageUrl: 'https://images.unsplash.com/photo-1598928506311-c55ded91a20c?q=80&w=800&auto=format&fit=crop',
+    imageUrl: 'https://i.ibb.co/ccwF8jck/f69dd613-36d2-4abf-b2da-6aa5f7e64a62.avif',
+    images: [
+        'https://i.ibb.co/ccwF8jck/f69dd613-36d2-4abf-b2da-6aa5f7e64a62.avif',
+        'https://i.ibb.co/hjGNVL3/Praia-da-Tatajuba-no-Cear.jpg',
+        'https://i.ibb.co/KjzbVYpX/470229171-18095028463500076-8977065317194053441-n.jpg'
+    ],
     features: ['Área de Yoga', 'Fonte de Água', 'Cozinha Completa', 'Pet Friendly', 'Varanda Ampla'],
   }
 ];
 
 export const GALLERY_IMAGES = [
-  'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=600&auto=format&fit=crop', // Classic beach
-  'https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?q=80&w=400&auto=format&fit=crop', // Waves
-  'https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?q=80&w=600&auto=format&fit=crop', // Surfer vibe
-  'https://images.unsplash.com/photo-1520483602335-3a2ac9d464ba?q=80&w=600&auto=format&fit=crop', // Sunset silhouette
-  'https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=600&auto=format&fit=crop', // Scuba/Water
-  'https://images.unsplash.com/photo-1505118380757-91f5f5632de0?q=80&w=400&auto=format&fit=crop', // Birds/Nature
-  'https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?q=80&w=600&auto=format&fit=crop', // Cozy house interior
-  'https://images.unsplash.com/photo-1414609245224-afa02bfb3fda?q=80&w=600&auto=format&fit=crop', // Cocktail beach
+  'https://i.ibb.co/XZpy7J4j/cb727d824bcaae1855ea33e590acf37f.jpg',
+  'https://i.ibb.co/VW45Vzvp/images-1.jpg',
+  'https://i.ibb.co/M5WGhz71/images.jpg',
+  'https://i.ibb.co/WvRK63wV/c6b1ca419bff432ba4f948aa676208cf.webp',
+  'https://i.ibb.co/wFgy3C83/579396475-18125922973500076-2476353317837443599-n.jpg',
+  'https://i.ibb.co/V0KsSZvK/f469e07ac84a4569a91a855b3b4b475d.webp',
+  'https://i.ibb.co/hjGNVL3/Praia-da-Tatajuba-no-Cear.jpg'
 ];
 
 export const SYSTEM_INSTRUCTION = `

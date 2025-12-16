@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { HOUSES } from '../constants';
 import HouseCard from './HouseCard';
+import HouseModal from './HouseModal';
+import { House } from '../types';
 
 const HouseList: React.FC = () => {
+  const [selectedHouse, setSelectedHouse] = useState<House | null>(null);
+
   return (
     <section id="houses" className="py-24 px-4 bg-sand-100">
       <div className="mx-auto max-w-7xl">
@@ -14,10 +18,22 @@ const HouseList: React.FC = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {HOUSES.map((house) => (
-            <HouseCard key={house.id} house={house} />
+            <HouseCard 
+              key={house.id} 
+              house={house} 
+              onSelect={(house) => setSelectedHouse(house)}
+            />
           ))}
         </div>
       </div>
+
+      {/* Modal */}
+      {selectedHouse && (
+        <HouseModal 
+          house={selectedHouse} 
+          onClose={() => setSelectedHouse(null)} 
+        />
+      )}
     </section>
   );
 };

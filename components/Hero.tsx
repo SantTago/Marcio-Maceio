@@ -1,18 +1,40 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+
+const HERO_IMAGES = [
+  'https://i.ibb.co/hjGNVL3/Praia-da-Tatajuba-no-Cear.jpg',
+  'https://i.ibb.co/MxpYwZ6P/images-2.jpg',
+  'https://i.ibb.co/99fHm35V/Camocim-4-1-1024x732.jpg',
+  'https://i.ibb.co/V0KsSZvK/f469e07ac84a4569a91a855b3b4b475d.webp'
+];
 
 const Hero: React.FC = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % HERO_IMAGES.length);
+    }, 5000); // Change image every 5 seconds
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="relative h-screen w-full overflow-hidden">
-      {/* Background Image with Overlay */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-10000 hover:scale-105"
-        style={{ 
-          backgroundImage: `url('https://images.unsplash.com/photo-1519046904884-53103b34b206?q=80&w=2000&auto=format&fit=crop')`, // Stunning beach sunset
-        }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/50"></div>
-        <div className="absolute inset-0 bg-gradient-to-r from-sunset-900/20 to-ocean-900/20 mix-blend-overlay"></div>
-      </div>
+      {/* Carousel Background Images */}
+      {HERO_IMAGES.map((image, index) => (
+        <div 
+          key={image}
+          className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-1000 ease-in-out ${
+            index === currentIndex ? 'opacity-100 scale-105' : 'opacity-0 scale-100'
+          }`}
+          style={{ 
+            backgroundImage: `url('${image}')`,
+          }}
+        />
+      ))}
+
+      {/* Overlays */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/50 z-0"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-sunset-900/20 to-ocean-900/20 mix-blend-overlay z-0"></div>
 
       {/* Content */}
       <div className="relative z-10 flex h-full flex-col items-center justify-center text-center text-white px-4">
@@ -39,6 +61,20 @@ const Hero: React.FC = () => {
             <span className="relative z-10">Conheça a Praia</span>
             </a>
         </div>
+      </div>
+
+      {/* Carousel Indicators */}
+      <div className="absolute bottom-24 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+        {HERO_IMAGES.map((_, idx) => (
+            <button
+                key={idx}
+                onClick={() => setCurrentIndex(idx)}
+                className={`h-1.5 rounded-full transition-all duration-300 ${
+                    idx === currentIndex ? 'bg-white w-8' : 'bg-white/40 w-2 hover:bg-white/70'
+                }`}
+                aria-label={`Slide ${idx + 1}`}
+            />
+        ))}
       </div>
 
       {/* Scroll Indicator */}

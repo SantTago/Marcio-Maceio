@@ -12,13 +12,13 @@ const TheBeach: React.FC = () => {
                 {/* Visuals */}
                 <div className="lg:w-1/2 grid grid-cols-2 gap-4">
                     <img 
-                        src="https://images.unsplash.com/photo-1506953823976-52e1fdc0149a?q=80&w=600&auto=format&fit=crop" 
+                        src="https://i.ibb.co/YFTXWxq7/1f8cfd6b8a6da21fc5e43c57e4214e53.jpg" 
                         alt="Praia do Rosa Areia" 
                         className="rounded-2xl shadow-lg w-full h-64 object-cover transform translate-y-8"
                     />
                     <img 
-                        src="https://images.unsplash.com/photo-1502680390469-be75c86b636f?q=80&w=600&auto=format&fit=crop" 
-                        alt="Surf na Praia do Rosa" 
+                        src="https://i.ibb.co/KjzbVYpX/470229171-18095028463500076-8977065317194053441-n.jpg" 
+                        alt="Relaxando na Praia" 
                         className="rounded-2xl shadow-lg w-full h-64 object-cover"
                     />
                 </div>
