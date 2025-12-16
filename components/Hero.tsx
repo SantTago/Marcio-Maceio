@@ -46,7 +46,7 @@ const Hero: React.FC = () => {
         </h2>
         
         <p className="mb-10 max-w-2xl text-lg md:text-xl font-light text-white/90 drop-shadow-md">
-          Experimente a magia do Caminho do Rei. Acorde com o som das ondas e viva o melhor da praia com pés na areia.
+          Descubra o encanto da Praia do Maceió. Sinta a brisa do Ceará, os coqueirais a perder de vista e o descanso que você merece.
         </p>
         
         <div className="flex flex-col sm:flex-row gap-4">

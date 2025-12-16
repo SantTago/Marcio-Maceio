@@ -9,7 +9,7 @@ const GeminiConcierge: React.FC = () => {
     {
       id: 'welcome',
       role: 'model',
-      text: 'Olá! Sou o assistente virtual do Márcio Mota. Posso ajudar você a encontrar a casa perfeita no Caminho do Rei ou dar dicas sobre a Praia do Rosa. Como posso ajudar hoje?',
+      text: 'Olá! Sou o assistente virtual do Márcio Mota. Posso ajudar você a encontrar a casa perfeita na Praia do Maceió ou dar dicas sobre Camocim/CE. Como posso ajudar hoje?',
       timestamp: new Date()
     }
   ]);

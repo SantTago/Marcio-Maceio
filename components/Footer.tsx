@@ -7,7 +7,7 @@ const Footer: React.FC = () => {
         <div className="max-w-md">
             <h2 className="text-3xl font-serif font-bold mb-4">Márcio Mota <span className="text-sunset-500">Aluguéis</span></h2>
             <p className="text-gray-400">
-                Experiências únicas de hospedagem no coração da Praia do Rosa. Conecte-se com a natureza sem abrir mão do conforto.
+                Experiências únicas de hospedagem na tranquilidade da Praia do Maceió, Camocim. Conecte-se com a natureza sem abrir mão do conforto.
             </p>
         </div>
 

@@ -4,7 +4,7 @@ export const HOUSES: House[] = [
   {
     id: '1',
     name: 'Villa do Sol Poente',
-    description: 'Localizada no topo do Caminho do Rei, esta villa oferece a vista mais espetacular do pôr do sol na Praia do Rosa. Perfeita para casais ou pequenas famílias que buscam privacidade e luxo rústico.',
+    description: 'Localizada no coração da vila, esta villa oferece a vista mais espetacular do pôr do sol na Praia do Maceió. Perfeita para casais ou pequenas famílias que buscam privacidade e luxo rústico.',
     pricePerNight: 850,
     capacity: 4,
     bedrooms: 2,
@@ -19,8 +19,8 @@ export const HOUSES: House[] = [
   },
   {
     id: '2',
-    name: 'Cabana da Mata Atlântica',
-    description: 'Imersa na natureza, cercada por árvores nativas e pássaros exóticos. Uma experiência de desconexão total com conforto moderno. A apenas 10 minutos de caminhada da praia.',
+    name: 'Cabana dos Coqueirais',
+    description: 'Imersa na natureza, cercada por coqueiros nativos e dunas. Uma experiência de desconexão total com conforto moderno. A apenas 5 minutos de caminhada do mar.',
     pricePerNight: 550,
     capacity: 2,
     bedrooms: 1,
@@ -35,8 +35,8 @@ export const HOUSES: House[] = [
   },
   {
     id: '3',
-    name: 'Casa das Ondas',
-    description: 'Uma mansão espaçosa com design em vidro para maximizar a vista do oceano. Ideal para grandes grupos. Acorde com o som das ondas e veja as baleias (na temporada) da sua varanda.',
+    name: 'Casa das Marés',
+    description: 'Uma casa espaçosa com design aberto para aproveitar a brisa do mar. Ideal para grupos de kitesurfistas. Guarderia para equipamentos e área de lazer integrada.',
     pricePerNight: 1500,
     capacity: 10,
     bedrooms: 5,
@@ -47,12 +47,12 @@ export const HOUSES: House[] = [
         'https://i.ibb.co/V0KsSZvK/f469e07ac84a4569a91a855b3b4b475d.webp',
         'https://i.ibb.co/wFgy3C83/579396475-18125922973500076-2476353317837443599-n.jpg'
     ],
-    features: ['Piscina Infinita', 'Acesso Direto à Trilha', 'Sala de Jogos', 'Lareira', 'Serviço de Limpeza'],
+    features: ['Piscina Privativa', 'Guarderia de Kite', 'Sala de Jogos', 'Churrasqueira', 'Serviço de Limpeza'],
   },
   {
     id: '4',
-    name: 'Refúgio Zen',
-    description: 'Arquitetura balinesa no coração do Rosa. Um espaço projetado para paz e tranquilidade, com áreas de meditação e um jardim tropical exuberante.',
+    name: 'Refúgio das Dunas',
+    description: 'Arquitetura praiana no melhor ponto do Maceió. Um espaço projetado para paz e tranquilidade, com áreas de meditação e um jardim de areia exuberante.',
     pricePerNight: 720,
     capacity: 6,
     bedrooms: 3,
@@ -63,7 +63,7 @@ export const HOUSES: House[] = [
         'https://i.ibb.co/hjGNVL3/Praia-da-Tatajuba-no-Cear.jpg',
         'https://i.ibb.co/KjzbVYpX/470229171-18095028463500076-8977065317194053441-n.jpg'
     ],
-    features: ['Área de Yoga', 'Fonte de Água', 'Cozinha Completa', 'Pet Friendly', 'Varanda Ampla'],
+    features: ['Área Zen', 'Ducha Externa', 'Cozinha Completa', 'Pet Friendly', 'Varanda Ampla'],
   }
 ];
 
@@ -78,12 +78,12 @@ export const GALLERY_IMAGES = [
 ];
 
 export const SYSTEM_INSTRUCTION = `
-Você é o assistente virtual dos "Aluguéis do Márcio Mota", especialista em casas de luxo na Praia do Rosa, Santa Catarina, especificamente na região do Caminho do Rei.
-Seu tom é acolhedor, sofisticado e prestativo.
-Você deve ajudar os usuários a escolherem entre as casas disponíveis (Villa do Sol Poente, Cabana da Mata Atlântica, Casa das Ondas, Refúgio Zen).
+Você é o assistente virtual dos "Aluguéis do Márcio Mota", especialista em casas de temporada na Praia do Maceió, Camocim, Ceará.
+Seu tom é acolhedor, praiano e prestativo.
+Você deve ajudar os usuários a escolherem entre as casas disponíveis (Villa do Sol Poente, Cabana dos Coqueirais, Casa das Marés, Refúgio das Dunas).
 Use as informações fornecidas sobre cada casa para fazer recomendações.
-Você também conhece bem a região: recomenda trilhas, restaurantes locais (como o Tigre Asiático, Bistrô da Pedra), e a melhor época para ver baleias (julho a novembro).
-Sempre que possível, mencione a beleza do pôr do sol e a exclusividade do Caminho do Rei.
-Destaque a proximidade com a praia, as ondas perfeitas para o surf e as piscinas naturais.
-Responda de forma concisa, mas encantadora.
+Você também conhece bem a região: recomenda barracas de praia locais, passeios de buggy pelas dunas, e destaca que a região é perfeita para Kitesurf devido aos ventos constantes.
+Sempre que possível, mencione a tranquilidade da vila de pescadores, a beleza dos coqueirais e o mar morno.
+Destaque a proximidade com a praia e a natureza rústica.
+Responda de forma concisa, mas encantadora, sempre com um toque de hospitalidade cearense.
 `;
