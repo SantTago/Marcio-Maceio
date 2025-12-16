@@ -38,9 +38,13 @@ const Hero: React.FC = () => {
 
       {/* Content */}
       <div className="relative z-10 flex h-full flex-col items-center justify-center text-center text-white px-4">
-        <h1 className="mb-6 font-serif text-5xl md:text-7xl font-bold tracking-tight drop-shadow-lg">
-          Sunset Villas <span className="text-sunset-300">Rosa</span>
+        <h1 className="mb-4 font-serif text-5xl md:text-7xl font-bold tracking-tight drop-shadow-lg">
+          Márcio Mota
         </h1>
+        <h2 className="mb-10 font-serif text-2xl md:text-4xl text-sunset-200 font-medium drop-shadow-md">
+          Aluguéis de Casa para Temporadas
+        </h2>
+        
         <p className="mb-10 max-w-2xl text-lg md:text-xl font-light text-white/90 drop-shadow-md">
           Experimente a magia do Caminho do Rei. Acorde com o som das ondas e viva o melhor da praia com pés na areia.
         </p>

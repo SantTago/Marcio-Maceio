@@ -22,7 +22,7 @@ const HouseModal: React.FC<HouseModalProps> = ({ house, onClose }) => {
     if (e.target === e.currentTarget) onClose();
   };
 
-  const whatsappLink = `https://wa.me/5548999999999?text=${encodeURIComponent(`Olá! Gostaria de reservar a ${house.name} que vi no site Sunset Villas.`)}`;
+  const whatsappLink = `https://wa.me/5548999999999?text=${encodeURIComponent(`Olá! Gostaria de reservar a ${house.name} que vi no site Márcio Mota Aluguéis.`)}`;
 
   return (
     <div 

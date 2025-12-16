@@ -9,7 +9,7 @@ const GeminiConcierge: React.FC = () => {
     {
       id: 'welcome',
       role: 'model',
-      text: 'Olá! Sou o Rosa Concierge. Posso ajudar você a encontrar a casa perfeita no Caminho do Rei ou dar dicas sobre a Praia do Rosa. Como posso ajudar hoje?',
+      text: 'Olá! Sou o assistente virtual do Márcio Mota. Posso ajudar você a encontrar a casa perfeita no Caminho do Rei ou dar dicas sobre a Praia do Rosa. Como posso ajudar hoje?',
       timestamp: new Date()
     }
   ]);
@@ -74,7 +74,7 @@ const GeminiConcierge: React.FC = () => {
                     <i className="fa-solid fa-sparkles text-sm"></i>
                 </div>
                 <div>
-                    <h3 className="font-semibold text-sm">Rosa Concierge</h3>
+                    <h3 className="font-semibold text-sm">Concierge Márcio Mota</h3>
                     <p className="text-xs text-white/80">Online agora</p>
                 </div>
             </div>
