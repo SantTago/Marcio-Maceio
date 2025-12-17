@@ -18,7 +18,7 @@ const Hero: React.FC = () => {
   }, []);
 
   return (
-    <div className="relative h-screen w-full overflow-hidden">
+    <div className="relative min-h-[100dvh] h-screen w-full overflow-hidden">
       {/* Carousel Background Images */}
       {HERO_IMAGES.map((image, index) => (
         <div 
@@ -37,22 +37,22 @@ const Hero: React.FC = () => {
       <div className="absolute inset-0 bg-gradient-to-r from-sunset-900/20 to-ocean-900/20 mix-blend-overlay z-0"></div>
 
       {/* Content */}
-      <div className="relative z-10 flex h-full flex-col items-center justify-center text-center text-white px-4">
-        <h1 className="mb-4 font-serif text-5xl md:text-7xl font-bold tracking-tight drop-shadow-lg">
+      <div className="relative z-10 flex h-full flex-col items-center justify-center text-center text-white px-4 md:px-6">
+        <h1 className="mb-2 md:mb-4 font-serif text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight drop-shadow-lg">
           Márcio Mota
         </h1>
-        <h2 className="mb-10 font-serif text-2xl md:text-4xl text-sunset-200 font-medium drop-shadow-md">
+        <h2 className="mb-6 md:mb-10 font-serif text-lg sm:text-2xl md:text-4xl text-sunset-200 font-medium drop-shadow-md px-2">
           Aluguéis de Casa para Temporadas
         </h2>
         
-        <p className="mb-10 max-w-2xl text-lg md:text-xl font-light text-white/90 drop-shadow-md">
+        <p className="mb-8 md:mb-10 max-w-2xl text-base sm:text-lg md:text-xl font-light text-white/90 drop-shadow-md px-4">
           Descubra o encanto da Praia do Maceió. Sinta a brisa do Ceará, os coqueirais a perder de vista e o descanso que você merece.
         </p>
         
-        <div className="flex flex-col sm:flex-row gap-4">
+        <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto px-4 sm:px-0">
             <a 
             href="#houses" 
-            className="group relative overflow-hidden rounded-full bg-sunset-500 px-8 py-4 font-semibold text-white shadow-lg transition-all hover:bg-sunset-600 hover:shadow-sunset-500/50"
+            className="group relative overflow-hidden rounded-full bg-sunset-500 px-8 py-3 md:py-4 font-semibold text-white shadow-lg transition-all hover:bg-sunset-600 hover:shadow-sunset-500/50 w-full sm:w-auto"
             >
             <span className="relative z-10">Ver Casas de Praia</span>
             <div className="absolute inset-0 -z-0 h-full w-full translate-y-full rounded-full bg-white/20 transition-transform group-hover:translate-y-0"></div>
@@ -60,7 +60,7 @@ const Hero: React.FC = () => {
             
             <a 
             href="#beach" 
-            className="group relative overflow-hidden rounded-full border-2 border-white/50 bg-black/20 backdrop-blur-sm px-8 py-4 font-semibold text-white shadow-lg transition-all hover:bg-white/10 hover:border-white"
+            className="group relative overflow-hidden rounded-full border-2 border-white/50 bg-black/20 backdrop-blur-sm px-8 py-3 md:py-4 font-semibold text-white shadow-lg transition-all hover:bg-white/10 hover:border-white w-full sm:w-auto"
             >
             <span className="relative z-10">Conheça a Praia</span>
             </a>
@@ -82,7 +82,7 @@ const Hero: React.FC = () => {
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce text-white/70">
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce text-white/70 hidden md:block">
         <i className="fa-solid fa-chevron-down text-3xl"></i>
       </div>
     </div>

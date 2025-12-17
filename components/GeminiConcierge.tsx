@@ -63,10 +63,10 @@ const GeminiConcierge: React.FC = () => {
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end">
+    <div className="fixed bottom-4 right-4 z-50 flex flex-col items-end sm:bottom-6 sm:right-6">
       {/* Chat Window */}
       {isOpen && (
-        <div className="mb-4 w-80 sm:w-96 overflow-hidden rounded-2xl bg-white shadow-2xl ring-1 ring-black/5 transition-all duration-300 animate-fade-in-up">
+        <div className="mb-4 w-[calc(100vw-2rem)] sm:w-96 overflow-hidden rounded-2xl bg-white shadow-2xl ring-1 ring-black/5 transition-all duration-300 animate-fade-in-up origin-bottom-right">
           {/* Header */}
           <div className="bg-gradient-to-r from-sunset-500 to-sunset-700 p-4 text-white flex justify-between items-center">
             <div className="flex items-center gap-3">
@@ -78,20 +78,20 @@ const GeminiConcierge: React.FC = () => {
                     <p className="text-xs text-white/80">Online agora</p>
                 </div>
             </div>
-            <button onClick={() => setIsOpen(false)} className="text-white/80 hover:text-white transition-colors">
-              <i className="fa-solid fa-xmark"></i>
+            <button onClick={() => setIsOpen(false)} className="text-white/80 hover:text-white transition-colors p-1">
+              <i className="fa-solid fa-xmark text-lg"></i>
             </button>
           </div>
 
           {/* Messages Area */}
-          <div className="h-80 overflow-y-auto bg-gray-50 p-4 space-y-4">
+          <div className="h-[50vh] sm:h-80 overflow-y-auto bg-gray-50 p-4 space-y-4 overscroll-contain">
             {messages.map((msg) => (
               <div
                 key={msg.id}
                 className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
               >
                 <div
-                  className={`max-w-[80%] rounded-2xl px-4 py-3 text-sm shadow-sm ${
+                  className={`max-w-[85%] rounded-2xl px-4 py-3 text-sm shadow-sm leading-relaxed ${
                     msg.role === 'user'
                       ? 'bg-sunset-500 text-white rounded-tr-none'
                       : 'bg-white text-gray-700 border border-gray-100 rounded-tl-none'
@@ -121,13 +121,13 @@ const GeminiConcierge: React.FC = () => {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={handleKeyDown}
-                placeholder="Pergunte sobre as casas..."
-                className="flex-1 bg-transparent text-sm text-gray-800 placeholder-gray-400 focus:outline-none"
+                placeholder="Digite sua dúvida..."
+                className="flex-1 bg-transparent text-sm text-gray-800 placeholder-gray-400 focus:outline-none min-w-0"
               />
               <button
                 onClick={handleSend}
                 disabled={!input.trim() || isLoading}
-                className="text-sunset-500 hover:text-sunset-700 disabled:opacity-50 transition-colors"
+                className="text-sunset-500 hover:text-sunset-700 disabled:opacity-50 transition-colors p-1"
               >
                 <i className="fa-solid fa-paper-plane"></i>
               </button>
@@ -139,7 +139,8 @@ const GeminiConcierge: React.FC = () => {
       {/* Toggle Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className={`group flex h-14 w-14 items-center justify-center rounded-full shadow-lg transition-all duration-300 hover:scale-110 ${isOpen ? 'bg-gray-800 text-white rotate-90' : 'bg-gradient-to-r from-sunset-500 to-orange-500 text-white'}`}
+        className={`group flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-full shadow-lg transition-all duration-300 hover:scale-105 active:scale-95 ${isOpen ? 'bg-gray-800 text-white rotate-90' : 'bg-gradient-to-r from-sunset-500 to-orange-500 text-white'}`}
+        aria-label="Abrir chat do concierge"
       >
         {isOpen ? (
              <i className="fa-solid fa-xmark text-xl"></i>
