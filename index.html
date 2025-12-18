@@ -1,67 +1,250 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Márcio Mota - Alugueis de casa para temporadas</title>
+    <title>Márcio Mota - Aluguéis Praia do Maceió</title>
     
-    <!-- Shim para evitar erro de 'process is not defined' no GitHub Pages -->
-    <script>
-      window.process = { env: { API_KEY: "" } };
-    </script>
-
+    <!-- Bibliotecas Base (UMD para compatibilidade total) -->
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
     <script>
+      // Shim para globais modernos
+      window.process = { env: { API_KEY: "" } };
+      
       tailwind.config = {
         theme: {
           extend: {
             colors: {
-              sunset: {
-                100: '#FFF0F5', 300: '#FFB6C1', 500: '#FF69B4', 700: '#C71585', 900: '#8B008B',
-              },
-              ocean: {
-                100: '#E0F7FA', 500: '#00BCD4', 900: '#006064',
-              },
-              sand: {
-                100: '#FDF5E6', 500: '#D2B48C', 900: '#8B4513',
-              }
+              sunset: { 500: '#FF69B4', 700: '#C71585' },
+              ocean: { 500: '#00BCD4', 100: '#E0F7FA' },
+              sand: { 100: '#FDF5E6', 500: '#D2B48C' }
             },
             fontFamily: {
-              sans: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'],
               serif: ['Georgia', 'serif'],
             }
           }
         }
       }
     </script>
+    
     <style>
+      /* Estilos Críticos de Compatibilidade */
       html { scroll-behavior: smooth; -webkit-overflow-scrolling: touch; }
-      body { overflow-x: hidden; width: 100%; position: relative; min-height: 100vh; }
-      * { -webkit-tap-highlight-color: transparent; }
+      body { margin: 0; padding: 0; background-color: #FDF5E6; -webkit-font-smoothing: antialiased; }
+      
+      /* Fallback para iPhone antigo (sem support a aspect-ratio) */
+      .img-container { position: relative; width: 100%; padding-top: 66%; overflow: hidden; border-radius: 12px; }
+      .img-container img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; }
+      
+      /* Animações simples */
+      @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+      .animate-fade { animation: fadeIn 0.5s ease-out forwards; }
+      
+      /* Fix para botões mobile */
+      button, a { cursor: pointer; touch-action: manipulation; }
     </style>
-
-    <script type="importmap">
+<script type="importmap">
 {
   "imports": {
-    "react": "https://esm.sh/react@19.0.0",
-    "react-dom": "https://esm.sh/react-dom@19.0.0",
-    "react-dom/client": "https://esm.sh/react-dom@19.0.0/client",
-    "@google/genai": "https://esm.sh/@google/genai@1.33.0",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-    "react/": "https://esm.sh/react@^19.2.3/"
+    "react": "https://esm.sh/react@^19.2.3",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.34.0"
   }
 }
 </script>
-  </head>
-  <body class="bg-sand-100 text-gray-800 antialiased">
+</head>
+<body>
     <div id="root"></div>
-    
-    <!-- Este script permite que o navegador execute o index.tsx diretamente de forma segura -->
-    <script type="module">
-      import "https://esm.sh/run/index.tsx";
+
+    <script type="text/babel">
+      const { useState, useEffect, useRef } = React;
+
+      // --- DADOS ---
+      const HOUSES = [
+        {
+          id: '1',
+          name: 'Villa do Sol Poente',
+          price: 850,
+          img: 'https://i.ibb.co/C32Nm6NG/image-maceio-camocim-ap-camocim-praia-bangalokite13-2.jpg',
+          features: ['Vista Mar', 'Wi-Fi', 'Ar Condicionado'],
+          desc: 'A melhor vista do pôr do sol da região.'
+        },
+        {
+          id: '2',
+          name: 'Cabana dos Coqueirais',
+          price: 550,
+          img: 'https://i.ibb.co/nsQ2K88x/images-3.jpg',
+          features: ['Rústico', 'Jardim', 'Privacidade'],
+          desc: 'Imersão total na natureza cearense.'
+        },
+        {
+          id: '3',
+          name: 'Casa das Marés',
+          price: 1500,
+          img: 'https://i.ibb.co/99fHm35V/Camocim-4-1-1024x732.jpg',
+          features: ['Piscina', '10 Pessoas', 'Kite Surf'],
+          desc: 'Perfeita para grupos e esportistas.'
+        },
+        {
+          id: '4',
+          name: 'Refúgio das Dunas',
+          price: 720,
+          img: 'https://i.ibb.co/ccwF8jck/f69dd613-36d2-4abf-b2da-6aa5f7e64a62.avif',
+          features: ['Deck', 'Pet Friendly', 'Varanda'],
+          desc: 'Paz e tranquilidade entre as dunas.'
+        }
+      ];
+
+      // --- COMPONENTES ---
+
+      const Navbar = () => (
+        <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md shadow-sm px-4 py-3 flex justify-between items-center">
+          <div className="flex flex-col">
+            <span className="font-bold text-gray-900 text-sm tracking-tighter">MÁRCIO MOTA</span>
+            <span className="text-[9px] text-sunset-500 font-bold uppercase tracking-widest">Aluguéis</span>
+          </div>
+          <a href="#houses" className="bg-sunset-500 text-white px-5 py-2 rounded-full text-xs font-bold shadow-lg active:scale-95 transition-transform">
+            RESERVAR
+          </a>
+        </nav>
+      );
+
+      const Hero = () => (
+        <header className="relative h-[90vh] flex items-center justify-center text-center px-6 overflow-hidden bg-gray-900">
+          <img 
+            src="https://i.ibb.co/hjGNVL3/Praia-da-Tatajuba-no-Cear.jpg" 
+            className="absolute inset-0 w-full h-full object-cover opacity-50"
+            alt="Praia do Maceió"
+          />
+          <div className="relative z-10 text-white max-w-2xl">
+            <h1 className="text-4xl sm:text-7xl font-serif font-bold mb-4 leading-tight drop-shadow-lg">Praia do Maceió</h1>
+            <p className="text-lg sm:text-xl opacity-90 mb-8 font-light italic">"Onde o vento faz a curva e o sol descansa no mar"</p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a href="#houses" className="bg-white text-gray-900 px-10 py-4 rounded-full font-bold shadow-xl active:bg-gray-100 transition-colors">VER CASAS</a>
+              <a href="https://maps.app.goo.gl/ZnWqZQ23QY2n6Y7HA" target="_blank" className="bg-black/30 border border-white/50 backdrop-blur-md text-white px-10 py-4 rounded-full font-bold">COMO CHEGAR</a>
+            </div>
+          </div>
+        </header>
+      );
+
+      const HouseCard = ({ house }) => (
+        <div className="w-full sm:w-1/2 lg:w-1/4 p-3 animate-fade">
+          <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow border border-gray-100">
+            <div className="img-container">
+              <img src={house.img} alt={house.name} loading="lazy" />
+            </div>
+            <div className="p-5">
+              <h3 className="text-xl font-bold text-gray-800 mb-1">{house.name}</h3>
+              <p className="text-gray-500 text-xs mb-4 line-clamp-2">{house.desc}</p>
+              <div className="flex flex-wrap gap-2 mb-4">
+                {house.features.map(f => (
+                  <span key={f} className="text-[9px] bg-ocean-100 text-ocean-500 font-bold px-2 py-1 rounded-md uppercase">{f}</span>
+                ))}
+              </div>
+              <div className="flex justify-between items-center pt-4 border-t border-gray-50">
+                <div>
+                  <span className="text-xs text-gray-400 block">Diárias de</span>
+                  <span className="text-lg font-bold text-sunset-500">R$ {house.price}</span>
+                </div>
+                <button 
+                  onClick={() => window.open(`https://wa.me/5548999999999?text=Olá Márcio! Vi a ${house.name} no site e gostaria de saber a disponibilidade.`, '_blank')}
+                  className="bg-green-500 text-white p-3 rounded-xl hover:bg-green-600 active:scale-90 transition-all shadow-md"
+                >
+                  <i className="fa-brands fa-whatsapp text-xl"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+
+      const AboutBeach = () => (
+        <section className="py-20 px-6 bg-white">
+          <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12">
+            <div className="w-full md:w-1/2">
+              <img src="https://i.ibb.co/YFTXWxq7/1f8cfd6b8a6da21fc5e43c57e4214e53.jpg" className="rounded-3xl shadow-2xl" alt="Maceió Beach" />
+            </div>
+            <div className="w-full md:w-1/2">
+              <h2 className="text-3xl font-serif font-bold mb-6 text-gray-900">Um Paraíso em Camocim</h2>
+              <p className="text-gray-600 leading-relaxed mb-6">
+                A Praia do Maceió é conhecida por sua tranquilidade, ventos constantes para o Kitesurf e águas mornas. 
+                Nossas casas foram escolhidas a dedo para proporcionar o máximo de conforto em meio à rusticidade charmosa da vila.
+              </p>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="bg-sand-100 p-4 rounded-2xl">
+                  <i className="fa-solid fa-wind text-ocean-500 mb-2"></i>
+                  <p className="text-xs font-bold uppercase">Melhor Vento</p>
+                </div>
+                <div className="bg-sand-100 p-4 rounded-2xl">
+                  <i className="fa-solid fa-fish text-sunset-500 mb-2"></i>
+                  <p className="text-xs font-bold uppercase">Peixe Fresco</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      );
+
+      const App = () => {
+        return (
+          <div className="min-h-screen">
+            <Navbar />
+            <Hero />
+            
+            <section id="houses" className="py-20 px-4 bg-sand-100">
+              <div className="max-w-7xl mx-auto">
+                <div className="text-center mb-12">
+                  <h2 className="text-3xl sm:text-5xl font-serif font-bold text-gray-900">Nossas Casas</h2>
+                  <p className="text-gray-500 mt-4">Encontre o seu refúgio ideal</p>
+                </div>
+                <div className="flex flex-wrap -mx-3">
+                  {HOUSES.map(house => <HouseCard key={house.id} house={house} />)}
+                </div>
+              </div>
+            </section>
+
+            <AboutBeach />
+
+            <section className="py-20 px-6 bg-gray-900 text-white text-center">
+              <h2 className="text-3xl font-serif font-bold mb-6">Pronto para relaxar?</h2>
+              <p className="mb-10 text-gray-400 max-w-lg mx-auto">Fale diretamente com o Márcio e garanta o melhor preço para sua temporada.</p>
+              <a 
+                href="https://wa.me/5548999999999" 
+                target="_blank"
+                className="inline-flex items-center gap-3 bg-green-500 text-white px-10 py-5 rounded-2xl font-bold text-lg shadow-2xl hover:bg-green-600 transition-all"
+              >
+                <i className="fa-brands fa-whatsapp text-2xl"></i>
+                RESERVAR PELO WHATSAPP
+              </a>
+              
+              <div className="mt-20 pt-10 border-t border-white/10 opacity-50 text-xs">
+                <p>Praia do Maceió, Camocim - Ceará</p>
+                <p className="mt-2">© 2025 Márcio Mota Aluguéis</p>
+              </div>
+            </section>
+
+            {/* Chat flutuante simplificado */}
+            <div className="fixed bottom-6 right-6 z-50">
+              <a 
+                href="https://wa.me/5548999999999" 
+                className="flex items-center justify-center w-14 h-14 bg-green-500 text-white rounded-full shadow-2xl animate-bounce"
+              >
+                <i className="fa-brands fa-whatsapp text-2xl"></i>
+              </a>
+            </div>
+          </div>
+        );
+      };
+
+      // Renderização Final
+      const root = ReactDOM.createRoot(document.getElementById('root'));
+      root.render(<App />);
     </script>
-  </body>
+</body>
 </html>
