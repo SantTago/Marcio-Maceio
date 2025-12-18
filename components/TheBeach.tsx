@@ -2,55 +2,54 @@ import React from 'react';
 
 const TheBeach: React.FC = () => {
   return (
-    <section id="beach" className="py-24 bg-white relative overflow-hidden">
-        {/* Background Decorative */}
-        <div className="absolute top-0 right-0 w-1/3 h-full bg-ocean-100/30 -skew-x-12 transform translate-x-20"></div>
+    <section id="beach" className="py-20 bg-white relative overflow-hidden">
+        {/* Elemento Decorativo */}
+        <div className="absolute top-0 right-0 w-1/4 h-full bg-ocean-100/20 hidden md:block"></div>
         
-        <div className="container mx-auto px-4 md:px-12 relative z-10">
-            <div className="flex flex-col lg:flex-row items-center gap-16">
+        <div className="container mx-auto px-4 sm:px-6 relative z-10">
+            <div className="flex flex-col lg:flex-row items-center">
                 
-                {/* Visuals */}
-                <div className="lg:w-1/2 grid grid-cols-2 gap-4">
-                    <img 
-                        src="https://i.ibb.co/YFTXWxq7/1f8cfd6b8a6da21fc5e43c57e4214e53.jpg" 
-                        alt="Areia Branca Ceará" 
-                        className="rounded-2xl shadow-lg w-full h-64 object-cover transform translate-y-8"
-                    />
-                    <img 
-                        src="https://i.ibb.co/KjzbVYpX/470229171-18095028463500076-8977065317194053441-n.jpg" 
-                        alt="Kitesurf e Praia" 
-                        className="rounded-2xl shadow-lg w-full h-64 object-cover"
-                    />
+                {/* Imagens com Margens Manuais */}
+                <div className="w-full lg:w-1/2 flex flex-col space-y-4 mb-12 lg:mb-0">
+                    <div className="flex space-x-4">
+                        <div className="w-1/2">
+                            <img 
+                                src="https://i.ibb.co/YFTXWxq7/1f8cfd6b8a6da21fc5e43c57e4214e53.jpg" 
+                                alt="Praia do Maceió" 
+                                className="rounded-xl shadow-md w-full h-48 sm:h-64 object-cover"
+                            />
+                        </div>
+                        <div className="w-1/2">
+                            <img 
+                                src="https://i.ibb.co/KjzbVYpX/470229171-18095028463500076-8977065317194053441-n.jpg" 
+                                alt="Kitesurf" 
+                                className="rounded-xl shadow-md w-full h-48 sm:h-64 object-cover mt-8"
+                            />
+                        </div>
+                    </div>
                 </div>
 
-                {/* Content */}
-                <div className="lg:w-1/2">
-                    <div className="flex items-center gap-4 mb-4">
-                        <span className="h-px w-12 bg-sunset-500"></span>
-                        <span className="uppercase tracking-widest text-sunset-700 text-sm font-semibold">O Destino</span>
+                {/* Texto */}
+                <div className="w-full lg:w-1/2 lg:pl-16">
+                    <div className="mb-6">
+                        <span className="text-sunset-500 font-bold text-xs uppercase tracking-widest block mb-2">Descubra Maceió</span>
+                        <h2 className="text-3xl sm:text-4xl font-serif text-gray-900 leading-tight">
+                            Natureza Intocada e <span className="text-ocean-500">Ventos Perfeitos</span>
+                        </h2>
                     </div>
                     
-                    <h2 className="text-4xl md:text-5xl font-serif text-gray-900 mb-6">
-                        O Caribe do <br/>
-                        <span className="text-ocean-500 italic">Litoral Cearense</span>
-                    </h2>
-                    
-                    <p className="text-gray-600 mb-6 text-lg leading-relaxed">
-                        A Praia do Maceió, em Camocim, é um tesouro escondido. Com suas águas mornas e tranquilas protegidas por arrecifes, é o cenário ideal para quem busca paz e contato direto com a natureza intocada.
+                    <p className="text-gray-600 mb-6 text-sm sm:text-base leading-relaxed">
+                        Localizada em Camocim, a Praia do Maceió preserva o charme de uma vila de pescadores com infraestrutura de luxo discreto. Águas mornas e cristalinas esperam por você.
                     </p>
 
-                    <p className="text-gray-600 mb-8 leading-relaxed">
-                        Reconhecida internacionalmente pelos ventos constantes, é um dos melhores lugares do mundo para a prática de Kitesurf e Windsurf. Desfrute de caminhadas intermináveis pela areia branca, passeios de buggy pelas dunas e um pôr do sol inesquecível no mar.
-                    </p>
-
-                    <div className="grid grid-cols-2 gap-6">
-                        <div className="flex flex-col">
-                            <span className="text-3xl font-bold text-sunset-500 mb-1">30°C</span>
-                            <span className="text-sm text-gray-500">Temperatura Média da Água</span>
+                    <div className="flex space-x-8 mt-8 border-t border-gray-100 pt-6">
+                        <div>
+                            <span className="block text-2xl font-bold text-sunset-500">30°C</span>
+                            <span className="text-[10px] text-gray-500 uppercase font-bold tracking-tighter">Água o ano todo</span>
                         </div>
-                        <div className="flex flex-col">
-                            <span className="text-3xl font-bold text-ocean-500 mb-1">Ventos</span>
-                            <span className="text-sm text-gray-500">Perfeitos para Esportes</span>
+                        <div>
+                            <span className="block text-2xl font-bold text-ocean-500">Top 3</span>
+                            <span className="text-[10px] text-gray-500 uppercase font-bold tracking-tighter">Mundo no Kitesurf</span>
                         </div>
                     </div>
                 </div>
